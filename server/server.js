@@ -35,8 +35,6 @@ const startApolloServer = async () => {
 
   app.use(cors(corsOptions));
 
-  app.use("/stripe", stripeWebhook);
-
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
