@@ -28,7 +28,7 @@ const startApolloServer = async () => {
 const corsOptions = {
   origin:
     process.env.NODE_ENV === "production"
-      ? process.env.CLIENT_URL
+      ? "https://tweeter-kode.onrender.com" // Replace with your Render URL
       : "http://localhost:3000",
   credentials: true,
 };
@@ -57,10 +57,7 @@ const corsOptions = {
   app.use(
     "/graphql",
     expressMiddleware(server, {
-      context: async ({ req }) => {
-        console.log("Request headers:", req.headers);
-        return authMiddleware({ req });
-      },
+      context: async ({ req }) => ({ token: req.headers.token }),
     })
   );
 
