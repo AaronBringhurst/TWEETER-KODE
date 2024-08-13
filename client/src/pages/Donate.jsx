@@ -13,7 +13,9 @@ import { useAuth } from "../hooks/useAuth";
 import { loadStripe } from "@stripe/stripe-js";
 
 // Initialize Stripe promise outside of the component
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(
+  "pk_test_51PmXWDRqZwKQhgXWr7qBZRxFvWTOUD7sNYEF3doDnMYA7QDZfE2ZNgojuzZC715U8l9ObDoHeNkX0Ya5pmX3WKD100qEZ1Rcjp"
+);
 
 const Donate = () => {
   const [createCheckoutSession] = useMutation(CREATE_CHECKOUT_SESSION);

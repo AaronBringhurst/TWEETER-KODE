@@ -9,7 +9,7 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && cd seeds && node seed.js",
     "build": "cd client && npm run build",
-    "deploy": "cd server && npm install && cd ../client && npm install && npm run build && cd ../server/seeds && node seed.js"
+    "deploy": "npm run seed"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +17,5 @@
   "devDependencies": {
     "concurrently": "^5.1.0",
     "dotenv": "^16.4.5"
-  },
-  "dependencies": {
-    "apollo-upload-client": "^18.0.1",
-    "prop-types": "^15.8.1"
   }
 }
