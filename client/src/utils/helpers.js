@@ -23,10 +23,9 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 // HTTP link
 const httpLink = createHttpLink({
-  uri: import.meta.env.PROD ? "/graphql" : "http://localhost:3001/graphql",
-  credentials: "include",
+  uri: "/graphql",
+  credentials: "same-origin",
 });
-
 // Authentication link
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");

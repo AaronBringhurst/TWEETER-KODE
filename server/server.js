@@ -7,7 +7,7 @@ import { authMiddleware } from "./utils/auth.js";
 import { typeDefs, resolvers } from "./schemas/index.js";
 import db from "./config/connection.js";
 import { graphqlUploadExpress } from "graphql-upload-minimal";
-import cors from "cors";
+
 import stripe from "./utils/stripe.js"; // Import your Stripe instance
 
 const __filename = fileURLToPath(import.meta.url);
@@ -24,16 +24,6 @@ const server = new ApolloServer({
 
 const startApolloServer = async () => {
   await server.start();
-
-const corsOptions = {
-  origin:
-    process.env.NODE_ENV === "production"
-      ? "https://tweeter-kode.onrender.com" // Replace with your Render URL
-      : "http://localhost:3000",
-  credentials: true,
-};
-
-  app.use(cors(corsOptions));
 
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
