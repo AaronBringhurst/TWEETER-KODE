@@ -27,7 +27,10 @@ const startApolloServer = async () => {
   await server.start();
 
   const corsOptions = {
-    origin: "http://localhost:3000",
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "https://tweeter-kode.onrender.com" // Replace with your actual Render app URL
+        : "http://localhost:3000",
     credentials: true,
   };
 
