@@ -14,7 +14,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "Dependencies": {
     "concurrently": "^5.3.0",
     "dotenv": "^16.4.5"
   }
