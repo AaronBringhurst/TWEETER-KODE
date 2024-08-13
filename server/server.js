@@ -28,7 +28,10 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
-  app.use("/images", express.static(path.join(__dirname, "../client/images")));
+  app.use(
+    "/images",
+    express.static(path.join(__dirname, "../client/dist/images"))
+  );
 
   app.use(graphqlUploadExpress());
 
