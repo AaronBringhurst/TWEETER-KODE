@@ -3,9 +3,6 @@ import { onError } from "@apollo/client/link/error";
 import { setContext } from "@apollo/client/link/context";
 import { createUploadLink } from "apollo-upload-client";
 
-// Determine the GraphQL URI based on the environment.
-
-  const apiUrl = import.meta.env.VITE_GRAPHQL_URI || 'http://localhost:3001/graphql';
 
 // Error handling link.
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -23,9 +20,8 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 // Custom upload link.
 const uploadLink = createUploadLink({
-  uri: apiUrl,
+  uri: import.meta.env.VITE_GRAPHQL_URI || "/graphql",
 });
-
 // Authentication link.
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");

@@ -25,13 +25,13 @@ const server = new ApolloServer({
 const startApolloServer = async () => {
   await server.start();
 
-  const corsOptions = {
-    origin:
-      process.env.NODE_ENV === "production"
-        ? "https://tweeter-kode.onrender.com" // Replace with your actual Render app URL
-        : "http://localhost:3000",
-    credentials: true,
-  };
+const corsOptions = {
+  origin:
+    process.env.NODE_ENV === "production"
+      ? process.env.CLIENT_URL
+      : "http://localhost:3000",
+  credentials: true,
+};
 
   app.use(cors(corsOptions));
 
@@ -76,7 +76,13 @@ const startApolloServer = async () => {
     await db();
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+      console.log(
+        `Use GraphQL at ${
+          process.env.NODE_ENV === "production"
+            ? process.env.SERVER_URL
+            : `http://localhost:${PORT}`
+        }/graphql`
+      );
     });
   } catch (error) {
     console.error("Failed to connect to MongoDB", error);
